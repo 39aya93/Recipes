@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff8a65">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>料理レシピDB</title>
+</head>
+<body>
+
+  <header>
+    <h1>🍳 料理レシピDB</h1>
+    <nav>
+      <button class="nav active" data-page="search">検索</button>
+      <button class="nav" data-page="register">登録</button>
+      <button class="nav" data-page="update">更新</button>
+      <button type="button" onclick="location.reload()">↻</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 検索ページ -->
+    <div class="page active" id="page-search">
+      <label>
+        食材で検索
+        <input type="text" id="searchIngredient" placeholder="にんじん、牛肉…" autocomplete="off">
+      </label>
+      <div id="ingredientCandidates" class="candidates"></div>
+
+      <label>
+        料理名で検索
+        <input type="text" id="searchRecipe" placeholder="カレー、シチュー…" autocomplete="off">
+      </label>
+
+      <button id="searchBtn" class="primary">検索</button>
+      <div id="searchResults"></div>
+    </div>
+
+    <!-- 登録ページ -->
+    <div class="page" id="page-register">
+      <form id="registerForm">
+        <fieldset>
+          <legend>食材（複数可）</legend>
+          <div id="registerIngredientsBox" class="ingredient-chips"></div>
+          <div class="ingredient-input-row">
+            <input type="text" id="registerIngredientInput" placeholder="食材名（表示名）" autocomplete="off">
+            <input type="text" id="registerIngredientKanji" placeholder="漢字（任意）" autocomplete="off">
+            <input type="text" id="registerIngredientKana" placeholder="ひらがな（任意）" autocomplete="off">
+            <input type="text" id="registerIngredientKata" placeholder="カタカナ（任意）" autocomplete="off">
+            <button type="button" class="add-btn" onclick="addIngredient('register')">＋ 追加</button>
+          </div>
+        </fieldset>
+
+        <label>
+          料理名
+          <input type="text" name="recipeName" required>
+        </label>
+        <label>
+          温度
+          <input type="text" name="temperature" placeholder="180℃">
+        </label>
+        <label>
+          時間
+          <input type="text" name="time" placeholder="30分">
+        </label>
+        <label>
+          調理手順
+          <textarea name="steps" rows="6"></textarea>
+        </label>
+        <label>
+          画像
+          <input type="file" id="registerImage" accept="image/*">
+        </label>
+        <img id="registerPreview" class="preview hidden" alt="プレュー">
+
+        <button type="submit" class="primary">登録</button>
+      </form>
+    </div>
+
+    <!-- 更新ページ -->
+    <div class="page" id="page-update">
+      <label>
+        更新する料理を選択
+        <select id="updateSelect">
+          <option value="">選択してください</option>
+        </select>
+      </label>
+
+      <form id="updateForm" class="hidden">
+        <input type="hidden" name="id">
+        <input type="hidden" name="imageFileId">
+
+        <fieldset>
+          <legend>食材（複数可）</legend>
+          <div id="updateIngredientsBox" class="ingredient-chips"></div>
+          <div class="ingredient-input-row">
+            <input type="text" id="updateIngredientInput" placeholder="食材名（表示名）" autocomplete="off">
+            <input type="text" id="updateIngredientKanji" placeholder="漢字（任意）" autocomplete="off">
+            <input type="text" id="updateIngredientKana" placeholder="ひらがな（任意）" autocomplete="off">
+            <input type="text" id="updateIngredientKata" placeholder="カタカナ（任意）" autocomplete="off">
+            <button type="button" class="add-btn" onclick="addIngredient('update')">＋ 追加</button>
+          </div>
+        </fieldset>
+
+        <label>
+          料理名
+          <input type="text" name="recipeName" required>
+        </label>
+        <label>
+          温度
+          <input type="text" name="temperature">
+        </label>
+        <label>
+          時間
+          <input type="text" name="time">
+        </label>
+        <label>
+          調理手順
+          <textarea name="steps" rows="6"></textarea>
+        </label>
+        <label>
+          画像（変更する場合のみ）
+          <input type="file" id="updateImage" accept="image/*">
+        </label>
+        <img id="updatePreview" class="preview hidden" alt="プレビュー">
+
+        <button type="submit" class="primary">更新</button>
+      </form>
+    </div>
+  </main>
+
+  <div id="toast"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

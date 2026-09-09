@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  background: #f5f6f8;
+  color: #222;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  padding: 14px 18px;
+  font-size: 22px;
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+  padding: 0 10px 10px;
+}
+
+button {
+  border: 1px solid #bbb;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.active {
+  background: #333;
+  color: #fff;
+}
+
+main {
+  max-width: 760px;
+  margin: auto;
+  padding: 18px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+label {
+  display: block;
+  margin: 14px 0;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px;
+  border: 1px solid #bbb;
+  border-radius: 7px;
+  font-size: 16px;
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.candidates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0 14px;
+}
+
+.candidate {
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+.candidate.add {
+  border-color: #1769aa;
+  color: #1769aa;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 14px 0;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: #eef2f6;
+  border-radius: 14px;
+  padding: 5px 10px;
+}
+
+.steps {
+  max-height: 240px;
+  overflow: auto;
+  white-space: pre-wrap;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 7px;
+  background: #fafafa;
+}
+
+.recipe-image {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0;
+}
+
+.preview {
+  max-width: 220px;
+  max-height: 220px;
+  display: block;
+  margin: 8px 0;
+  border-radius: 8px;
+}
+
+.primary {
+  background: #1769aa;
+  color: #fff;
+  border: 0;
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 16px 0;
+  padding: 14px;
+}
+
+legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  display: none;
+  z-index: 100;
+}
+
+/* 食材チップ */
+.ingredient-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+  min-height: 20px;
+}
+
+.ingredient-chip {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ingredient-chip button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #1565c0;
+}
+
+.ingredient-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ingredient-input-row input {
+  flex: 1 1 130px;
+  margin-top: 0;
+}
+
+.ingredient-input-row .add-btn {
+  padding: 10px 16px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
